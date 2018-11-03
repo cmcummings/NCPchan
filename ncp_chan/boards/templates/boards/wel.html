@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'header.html' %}
+
+<style>
+    .upload img:hover {
+        cursor: pointer;
+    }
+
+    .upload small a {
+        text-decoration: underline;
+    }
+
+    pre {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+    }
+</style>
+
+<main class="p-5" style="height:200vh">
+
+    <h1 class="text-center">/wel/ - Welcome/Introductions</h1>
+    <hr>
+    <h4 class="text-center">[<a href="">Start a New Thread</a>]</h4>
+    {% include 'announcements.html' %}
+    <hr>
+
+    <script>
+        downscale = "25%";
+
+        resize = function (img) {
+            p = $(img);
+            if (p.attr("width") != downscale) {
+                p.attr("width", downscale);
+            } else {
+                p.attr("width", "100%");
+            }
+        }
+    </script>
+
+    <!-- Thread -->
+    <div>
+        <!-- OP -->
+        <div class="rounded p-3 w-50" id="437557776">
+            <div class="upload d-inline">
+                <small class="d-block">File: <a href="/static/uploads/the_musk.jpg">the_musk.jpg</a></small>
+                <img width=25% src="{% static 'uploads/the_musk.jpg' %}" onclick="resize(this)">
+            </div>
+            <div class="d-inline-block">
+                <div class="d-block">
+                    <h4 class="d-inline">Hello</h4>
+                    <p class="d-inline text-info">Anonymous</p>
+                    <p class="d-inline text-secondary">11/02/18(Fri)11:34PM</p>
+                    <p class="d-inline text-secondary">No.<a href="#437557776">437557776</a> [<a href="">Reply</a>]</p>
+                </div>
+                <blockquote class="mx-5 my-1 d-block">
+                    I'm new here!
+                </blockquote>
+            </div>
+
+            <!-- Reply -->
+            <div class="d-block">
+                <p class="text-muted d-inline-block align-top pt-3">>></p>
+                <div class="bg-light rounded p-3 ml-3 d-inline-block" id="437557777">
+                    <p class="d-inline text-info">Anonymous</p>
+                    <p class="d-inline text-secondary">11/02/18(Fri)11:39PM</p>
+                    <p class="d-inline text-secondary">No.<a href="#437557777">437557777</a> [<a href="">Reply</a>]</p>
+                    <blockquote class="mx-5 my-1">
+                        <a href="#437557776">>>437557776</a>
+                        <br>
+                        Welcome!
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="d-block">
+                <p class="text-muted d-inline-block align-top pt-3">>></p>
+                <div class="bg-light rounded p-3 ml-3 my-1 d-inline-block" id="437557778">
+                    <p class="d-inline text-info">Anonymous</p>
+                    <p class="d-inline text-secondary">11/02/18(Fri)11:42PM</p>
+                    <p class="d-inline text-secondary">No.<a href="#437557778">437557778</a> [<a href="">Reply</a>]</p>
+                    <blockquote class="mx-5 my-1">
+                        Another one
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</main>
+
+{% endblock %}

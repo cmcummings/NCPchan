@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+    <div class="container fixed-top bg-light border border-secondary p-3 rounded" style="top: 10vh; width:80vh;">
+        <div>
+            <img class="img-responsive mx-auto d-block" src="{% static 'res/ncpchan2_transparent.png' %}" width=30%>
+            <h1 class="text-center" style="color:#5E0F25">NCPchan</h1>
+            <p>
+                NCPchan is a board-based social media platform inspired by 4chan. 
+                NCPchan is school-appropriate, and advocates for free speech and diversity of thought.
+            </p>
+        </div>
+        <hr>
+        <h4>Boards</h4>
+        <small>Boards are different sections dedicated to specific topics. <a href="wel">Introduce yourself</a>!</small>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h5 class="mt-2" style="text-decoration: underline;">School</h5>
+                    <a href="sci/">/sci/</a> - Science<br>
+                    <a href="math/">/math/</a> - Math, that is, Mathematics<br>
+                    <a href="cs/">/cs/</a> - Computer Science<br>
+                    <a href="eng/">/eng/</a> - English<br>
+                    <a href="fl/">/fl/</a> - Foreign Language<br>
+                </div>
+                <div class="col-sm">
+                    <h5 class="mt-2" style="text-decoration: underline;">Extracurricular</h5>
+                    <a href="sp/">/sp/</a> - Sports<br>
+                    <a href="v/">/v/</a> - Video Games<br>
+                    <a href="a/">/a/</a> - Anime & Manga<br>
+                    <h5 class="mt-2" style="text-decoration: underline;">Miscellaneous</h5>
+                    <a href="{% url 'b-wel' %}">/wel/</a> - Welcome/Introductions<br>
+                    <a href="g/">/g/</a> - General<br>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <small>NCPchan is developed and maintained by Connor M. Cummings (<a href="https://github.com/gestalt8003">GitHub</a>)</small>
+    </div>
+
+</main>
+
+{% endblock %}
