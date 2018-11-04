@@ -22,7 +22,7 @@
 
 <main class="p-5" style="height:200vh">
 
-    <h1 class="text-center">/wel/ - Welcome/Introductions</h1>
+    <h1 class="text-center">{{ board.extension }} - {{ board.description }}</h1>
     <hr>
     <h4 class="text-center">[<a href="">Start a New Thread</a>]</h4>
     {% include 'announcements.html' %}
@@ -41,56 +41,44 @@
         }
     </script>
 
+    {% for thread in threads %}
     <!-- Thread -->
     <div>
+        
         <!-- OP -->
-        <div class="rounded p-3 w-50" id="437557776">
-            <div class="upload d-inline">
+        <div class="rounded p-3 w-50" id="{{ thread.id }}">
+            <!-- <div class="upload d-inline">
                 <small class="d-block">File: <a href="/static/uploads/the_musk.jpg">the_musk.jpg</a></small>
                 <img width=25% src="{% static 'uploads/the_musk.jpg' %}" onclick="resize(this)">
-            </div>
-            <div class="d-inline-block">
+            </div>   -->
+            <div class="d-inline-block align-top ml-2 mt-2">
                 <div class="d-block">
-                    <h4 class="d-inline">Hello</h4>
-                    <p class="d-inline text-info">Anonymous</p>
-                    <p class="d-inline text-secondary">11/02/18(Fri)11:34PM</p>
-                    <p class="d-inline text-secondary">No.<a href="#437557776">437557776</a> [<a href="">Reply</a>]</p>
+                    <h4 class="d-inline">{{ thread.title }}</h4>
+                    <p class="d-inline text-info">{{ thread.author }}</p>
+                    <p class="d-inline text-secondary">{{ thread.date }}</p>
+                    <p class="d-inline text-secondary">No.<a href="#{{ thread.id }}">{{ thread.id }}</a> [<a href="">Reply</a>]</p>
                 </div>
                 <blockquote class="mx-5 my-1 d-block">
-                    I'm new here!
+                    {{ thread.content }}
                 </blockquote>
             </div>
-
+            {% for reply in thread.replies %}
             <!-- Reply -->
             <div class="d-block">
                 <p class="text-muted d-inline-block align-top pt-3">>></p>
-                <div class="bg-light rounded p-3 ml-3 d-inline-block" id="437557777">
-                    <p class="d-inline text-info">Anonymous</p>
-                    <p class="d-inline text-secondary">11/02/18(Fri)11:39PM</p>
-                    <p class="d-inline text-secondary">No.<a href="#437557777">437557777</a> [<a href="">Reply</a>]</p>
+                <div class="bg-light rounded p-3 ml-3 d-inline-block" id="{{ reply.id }}">
+                    <p class="d-inline text-info">{{ reply.author }}</p>
+                    <p class="d-inline text-secondary">{{ reply.date }}</p>
+                    <p class="d-inline text-secondary">No.<a href="#{{ reply.id }}">{{ reply.id }}</a> [<a href="">Reply</a>]</p>
                     <blockquote class="mx-5 my-1">
-                        <a href="#437557776">>>437557776</a>
-                        <br>
-                        Welcome!
+                        {{ reply.content }}
                     </blockquote>
                 </div>
             </div>
-
-            <!-- Reply -->
-            <div class="d-block">
-                <p class="text-muted d-inline-block align-top pt-3">>></p>
-                <div class="bg-light rounded p-3 ml-3 my-1 d-inline-block" id="437557778">
-                    <p class="d-inline text-info">Anonymous</p>
-                    <p class="d-inline text-secondary">11/02/18(Fri)11:42PM</p>
-                    <p class="d-inline text-secondary">No.<a href="#437557778">437557778</a> [<a href="">Reply</a>]</p>
-                    <blockquote class="mx-5 my-1">
-                        Another one
-                    </blockquote>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        <hr>
     </div>
+    {% endfor %}
 </main>
 
 {% endblock %}
